@@ -10,20 +10,20 @@
             <field name="auto_delete" eval="False"/>
             <field name="body_html"><![CDATA[
                 <div style="background:#F0F0F0;color:#515166;padding:10px 0px;font-family:Arial,Helvetica,sans-serif;font-size:14px;">
-                    % set access_token = object.access_token
-                    % set document_name = object.type
-                    % set debit = object.es_nota_debito
-                    % set id_doc = object.id
-                    % set nombre_doc = ''
-                    % if document_name == 'out_invoice' and not debit:
-                    %     set nombre_doc = 'Factura'
-                    % endif
-                    % if document_name == 'out_refund':
-                    %     set nombre_doc = 'Nota Crédito'
-                    % endif
-                    % if document_name == 'out_invoice' and debit:
-                    %     set nombre_doc = 'Nota Débito'
-                    % endif
+                    {% set access_token = object.access_token %}
+                    {% set document_name = object.type %}
+                    {% set debit = object.es_nota_debito %}
+                    {% set id_doc = object.id %}
+                    {% set nombre_doc = '' %}
+                    {% if document_name == 'out_invoice' and not debit: %}
+                    {%     set nombre_doc = 'Factura' %}
+                    {% endif %}
+                    {% if document_name == 'out_refund': %}
+                    {%     set nombre_doc = 'Nota Crédito' %}
+                    {% endif
+                    {% if document_name == 'out_invoice' and debit: %}
+                    {%    set nombre_doc = 'Nota Débito' %}
+                    {% endif %}
                     <table style="width:600px;margin:5px auto;">
                         <tbody>
                             <tr>
